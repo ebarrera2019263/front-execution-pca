@@ -17,13 +17,22 @@
         <ul>
 
           <!-- 📡 MONITOR -->
-          <li nz-submenu nzTitle="Monitor" nzIcon="radar-chart">
+          <li nz-submenu nzTitle="Organizacion" nzIcon="radar-chart">
             <ul>
-              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/servicios">Servicios</a></li>
-              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/logs">Logs</a></li>
-              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/procesos">Procesos</a></li>
-              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/tareas">Tareas</a></li>
-              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/estado">Estado</a></li>
+              <li nz-menu-item nzMatchRouter>
+  <a routerLink="/organizacion/puestos">Puestos</a>
+</li>
+<li nz-menu-item nzMatchRouter>
+  <a routerLink="/organizacion/empleados">Empleados</a>
+</li>
+<li nz-menu-item nzMatchRouter>
+  <a routerLink="/organizacion/departamentos">Departamentos</a>
+</li>
+<li nz-menu-item nzMatchRouter>
+  <a routerLink="/organizacion/zonas">Zonas</a>
+</li>
+
+              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/estado">Reporte personal</a></li>
               <li nz-menu-item nzMatchRouter><a routerLink="/monitor/sesiones">Sesiones</a></li>
               <li nz-menu-item nzMatchRouter><a routerLink="/monitor/errores">Errores</a></li>
               <li nz-menu-item nzMatchRouter><a routerLink="/monitor/métricas">Métricas</a></li>

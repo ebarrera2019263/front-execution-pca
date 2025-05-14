@@ -1,0 +1,32 @@
+.puestos-container {
+  padding: 16px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .filtros {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+
+    .buscador {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  .acciones {
+    text-align: center;
+  }
+}

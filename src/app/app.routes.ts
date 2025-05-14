@@ -33,6 +33,17 @@ export const routes: Routes = [
           import('./pages/welcome/welcome.routes').then(m => m.WELCOME_ROUTES)
       },
       //  Aquí puedes seguir agregando más rutas hijas como evaluación, clima, etc.
+      {
+  path: 'organizacion',
+  children: [
+    {
+      path: '',
+      loadChildren: () =>
+        import('./modules/organization.routes').then(m => m.ORGANIZATION_ROUTES)
+    }
+  ]
+}
+
     ]
   },
 

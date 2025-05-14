@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+
 
 
 @Component({
   selector: 'app-welcome',
-  imports: [CommonModule, NzIconModule],
+  imports: [CommonModule, NzIconModule, NzCardModule, NzBadgeModule],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.scss'
 })

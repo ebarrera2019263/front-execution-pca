@@ -1,0 +1,50 @@
+<div class="puestos-container">
+  <div class="header">
+    <h3>📋 Catálogo de Puestos</h3>
+    <button nz-button nzType="primary" (click)="onNuevo()">
+      <span nz-icon nzType="plus"></span> Nuevo
+    </button>
+  </div>
+
+  <div class="filtros">
+    <label for="cantidad">Mostrar</label>
+    <nz-select [(ngModel)]="cantidad" style="width: 80px;" id="cantidad">
+      <nz-option [nzValue]="5" nzLabel="5"></nz-option>
+      <nz-option [nzValue]="10" nzLabel="10"></nz-option>
+      <nz-option [nzValue]="15" nzLabel="15"></nz-option>
+      <nz-option [nzValue]="20" nzLabel="20"></nz-option>
+    </nz-select>
+
+    <span class="buscador">
+      <label for="buscar">Buscar:</label>
+      <input nz-input [(ngModel)]="searchValue" placeholder="Nombre del puesto" id="buscar" />
+    </span>
+  </div>
+
+  <nz-table
+    [nzData]="puestosFiltrados"
+    [nzPageSize]="cantidad"
+    [nzShowSizeChanger]="false"
+    [nzBordered]="true"
+    [nzScroll]="{ x: '500px' }"
+  >
+    <thead>
+      <tr>
+        <th style="width: 100px;">Código</th>
+        <th>Nombre</th>
+        <th style="width: 100px;">Modificar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let puesto of puestosFiltrados">
+        <td>{{ puesto.codigo }}</td>
+        <td>{{ puesto.nombre }}</td>
+        <td class="acciones">
+          <button nz-button nzType="link" nzShape="circle">
+            <span nz-icon nzType="edit"></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
