@@ -1,0 +1,75 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo">
+      <img src="assets/logo-big.png" alt="Execution Logo" />
+    </div>
+
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+
+      <!-- 📂 CONFIGURACIÓN -->
+      <li nz-submenu nzOpen nzTitle="Configuración" nzIcon="setting">
+        <ul>
+
+          <!-- 📡 MONITOR -->
+          <li nz-submenu nzTitle="Monitor" nzIcon="radar-chart">
+            <ul>
+              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/servicios">Servicios</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/logs">Logs</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/procesos">Procesos</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/tareas">Tareas</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/estado">Estado</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/sesiones">Sesiones</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/errores">Errores</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/métricas">Métricas</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/reportes">Reportes</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/monitor/auditoría">Auditoría</a></li>
+            </ul>
+          </li>
+
+          <!-- 🧑 WORKPLACE -->
+          <li nz-submenu nzTitle="Workplace" nzIcon="user">
+            <ul>
+              <li nz-menu-item nzMatchRouter><a routerLink="/workplace/usuarios">Usuarios</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/workplace/roles">Roles</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/workplace/permisos">Permisos</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/workplace/perfiles">Perfiles</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </li>
+
+      <!-- 📋 FORMULARIOS -->
+      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>Basic Form</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <nz-icon class="trigger" [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" />
+        </span>
+      </div>
+    </nz-header>
+
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

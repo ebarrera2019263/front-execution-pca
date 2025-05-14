@@ -1,0 +1,38 @@
+<div class="summary-cards">
+  <div class="summary-card blue">
+    <div class="content">
+      <div class="title">Compromisos</div>
+      <div class="count">{{ resumen.compromisos }}</div>
+    </div>
+    <div class="footer">COMPROMISOS <span class="arrow">→</span></div>
+  </div>
+
+  <div class="summary-card red">
+    <div class="content">
+      <div class="title">Actividades</div>
+      <div class="count">{{ resumen.actividades }}</div>
+    </div>
+    <div class="footer">PROYECTOS <span class="arrow">→</span></div>
+  </div>
+
+  <div class="summary-card green">
+    <div class="content">
+      <div class="title">Oportunidades</div>
+      <div class="count">{{ resumen.oportunidades }}</div>
+    </div>
+    <div class="footer">GESTIÓN DE LA INNOVACIÓN <span class="arrow">→</span></div>
+  </div>
+</div>
+
+<!-- Aquí tu grilla de módulos debajo -->
+
+<div class="dashboard-wrapper">
+  <div class="dashboard-grid">
+    <div class="dashboard-card" *ngFor="let tile of tiles" (click)="navigate(tile.route)">
+      <div class="icon">
+        <nz-icon [nzType]="tile.icon" [nzTheme]="'outline'"></nz-icon>
+      </div>
+      <div class="label">{{ tile.label }}</div>
+    </div>
+  </div>
+</div>

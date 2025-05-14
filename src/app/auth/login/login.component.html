@@ -1,0 +1,51 @@
+<div class="login-container">
+  <div class="login-left">
+    <img src="assets/bg2.jpg" alt="Imagen" />
+  </div>
+  <div class="login-right">
+    <div class="login-box">
+      <img src="assets/bg3.jpg" class="logo" alt="Logo" />
+      <h2>Creando una cultura de alto desempeño</h2>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <nz-form-item>
+          <nz-form-control>
+            <input nz-input placeholder="Usuario" formControlName="username" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control>
+            <input nz-input type="password" placeholder="Contraseña" formControlName="password" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control>
+            <nz-select formControlName="language" nzPlaceHolder="Idioma">
+              <nz-option nzValue="es" nzLabel="ES"></nz-option>
+              <nz-option nzValue="en" nzLabel="EN"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <label nz-checkbox formControlName="remember">Recordar</label>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button nzType="primary" class="btn-login" [disabled]="form.invalid">
+              Iniciar
+            </button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+
+      <div class="footer">
+        <a class="forgot" href="#">¿Olvidó su contraseña?</a>
+        <p class="copyright">Copyright © PCA Guatemala C.A.</p>
+      </div>
+    </div>
+  </div>
+</div>
