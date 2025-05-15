@@ -1,10 +1,43 @@
-<div class="header-left">
-  <a routerLink="/">Inicio</a>
-  <a routerLink="/modulos">Módulos</a>
-</div>
+<nz-header class="navbar">
+  <!-- 1) Toggle sidebar -->
+  <button nz-button nzType="text" class="trigger" (click)="toggleSidebar.emit()">
+    <i nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+  </button>
 
-<div class="header-right">
-  <span>Erick</span>
-  <a routerLink="/perfil">Perfil</a>
-  <a (click)="logout()">Cerrar sesión</a>
-</div>
+  <!-- 2) Spacer ocupa todo el espacio restante -->
+  <span class="spacer"></span>
+
+  <!-- 3) Agrupación derecha -->
+  <div class="navbar-right">
+    <!-- Mensajes -->
+    <button nz-button nzType="text" routerLink="/messages">
+      <nz-badge [nzCount]="messageCount" [nzOffset]="[0, 5]">
+        <i nz-icon nzType="mail" nzTheme="outline"></i>
+      </nz-badge>
+    </button>
+
+    <!-- Notificaciones -->
+    <button nz-button nzType="text" routerLink="/notifications">
+      <nz-badge [nzCount]="notificationCount" [nzOffset]="[0, 5]">
+        <i nz-icon nzType="bell" nzTheme="outline"></i>
+      </nz-badge>
+    </button>
+
+    <!-- Dropdown Usuario (Material) -->
+    <button mat-button [matMenuTriggerFor]="userMenu" class="user-trigger">
+      <i nz-icon nzType="user" nzTheme="outline" class="avatar-icon"></i>
+      <span>Erick</span>
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item routerLink="/perfil">
+        <mat-icon>person</mat-icon>
+        <span>Perfil</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+    </mat-menu>
+  </div>
+</nz-header>

@@ -1,31 +1,83 @@
 :host {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 1000;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #080b23;
-  padding: 0 24px;
-  box-shadow: 0 1px 4px rgba(211, 8, 8, 0.08);
 }
 
-.header-left,
-.header-right {
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 64px;
+  background: 082748;
+  box-shadow: 0 1px 4px rgba(250, 250, 250, 0.1);
+}
+
+/* Botón de toggle */
+.trigger {
+  font-size: 18px;
+  color: #fffdfd;
+}
+
+/* Espacio flexible central */
+.spacer {
+  flex: 1;
+}
+
+/* Agrupación de la derecha */
+.navbar-right {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-a {
-  color: #e7e8ea;
-  font-weight: 500;
-  text-decoration: none;
+/* Iconos de NG-ZORRO */
+.navbar-right nz-badge nz-icon,
+.navbar-right button nz-icon {
+  font-size: 20px;
+  color: #d9dadc;
 }
 
-a:hover {
-  text-decoration: underline;
+/* Avatar icon */
+.avatar-icon {
+  font-size: 24px;
+  color: #e7e8ea;
 }
+
+/* Botón usuario */
+.user-trigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-transform: none;
+  color: #e7e8ea;
+}
+
+/* Icono de Material dentro del trigger */
+.user-trigger mat-icon {
+  font-size: 20px;
+  color: #e7e8ea;
+}
+
+
+/* 1) Aumentar el tamaño de todos los nz-icon dentro de botones */
+button[nz-button] i[nz-icon],
+.user-trigger i[nz-icon] {
+  font-size: 24px;      /* o el tamaño que prefieras */
+  color: #d0c7c7;       /* color del icono */
+}
+
+/* 2) Ajustar el badge de NG-Zorro */
+.navbar-right nz-badge .ant-badge-count {
+  background-color: #ff4d4f; /* color de fondo del badge */
+  color: #fff;               /* color del texto (número) */
+  min-width: 18px;           /* ancho mínimo */
+  height: 18px;              /* alto fijo */
+  line-height: 18px;         /* centra verticalmente el número */
+  font-size: 10px;           /* tamaño de fuente del número */
+  padding: 0 4px;            /* espacio horizontal extra si el número tiene 2 dígitos */
+  top: -6px;                 /* ajusta verticalmente */
+  right: -6px;               /* ajusta horizontalmente */
+}
+
+

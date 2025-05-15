@@ -1,51 +1,45 @@
 <div class="login-container">
-  <div class="login-left">
-    <img src="assets/bg2.jpg" alt="Imagen" />
-  </div>
-  <div class="login-right">
+  <div class="login-content">
+    <div class="login-image"></div>
+
     <div class="login-box">
-      <img src="assets/bg3.jpg" class="logo" alt="Logo" />
-      <h2>Creando una cultura de alto desempeño</h2>
+      <form class="form" [formGroup]="form" (ngSubmit)="onLogin()">
+        <h2>Sign in</h2>
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <nz-form-item>
-          <nz-form-control>
-            <input nz-input placeholder="Usuario" formControlName="username" />
-          </nz-form-control>
-        </nz-form-item>
+        <div class="flex-column">
+          <label>Email address</label>
+        </div>
+        <div class="inputForm">
+          <!-- icono de email -->
+          <input class="input" formControlName="email" placeholder="Enter your Email" />
+        </div>
 
-        <nz-form-item>
-          <nz-form-control>
-            <input nz-input type="password" placeholder="Contraseña" formControlName="password" />
-          </nz-form-control>
-        </nz-form-item>
+        <div class="flex-column">
+          <label>Password</label>
+        </div>
+        <div class="inputForm">
+          <!-- icono de candado -->
+          <input type="password" class="input" formControlName="password" placeholder="Enter your Password" />
+        </div>
 
-        <nz-form-item>
-          <nz-form-control>
-            <nz-select formControlName="language" nzPlaceHolder="Idioma">
-              <nz-option nzValue="es" nzLabel="ES"></nz-option>
-              <nz-option nzValue="en" nzLabel="EN"></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
+        <div class="flex-row">
+          <div>
+            <input type="checkbox" formControlName="remember" />
+            <label>Remember me</label>
+          </div>
+          <span class="span">Forgot password?</span>
+        </div>
 
-        <nz-form-item>
-          <label nz-checkbox formControlName="remember">Recordar</label>
-        </nz-form-item>
+        <button class="button-submit" [disabled]="form.invalid">Sign In</button>
 
-        <nz-form-item>
-          <nz-form-control>
-            <button nz-button nzType="primary" class="btn-login" [disabled]="form.invalid">
-              Iniciar
-            </button>
-          </nz-form-control>
-        </nz-form-item>
+        <p class="p">Don't have an account? <span class="span">Sign Up</span></p>
+        <p class="p line">Or With</p>
+
+        <div class="flex-row">
+          <button type="button" class="btn google">Google</button>
+          <button type="button" class="btn apple">Apple</button>
+        </div>
       </form>
-
-      <div class="footer">
-        <a class="forgot" href="#">¿Olvidó su contraseña?</a>
-        <p class="copyright">Copyright © PCA Guatemala C.A.</p>
-      </div>
     </div>
   </div>
 </div>

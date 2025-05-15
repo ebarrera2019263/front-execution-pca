@@ -1,14 +1,52 @@
-.dashboard-wrapper {
+:host {
+  display: block;
+  background-color: #f5f7fa; // Fondo general claro
+  color: #333; // Texto oscuro predeterminado
+  min-height: 100vh;
   padding: 24px;
-  background-color: #f5f7fa;
 }
 
+/* Tarjeta de actividades (nz-card) */
+nz-card.dashboard-card {
+  background-color: #ffffff !important;
+  color: #333 !important;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+  padding: 16px;
+  margin-bottom: 24px;
+
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 8px;
+  }
+
+  .card-subtitle {
+    font-size: 12px;
+    color: #999;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Contenedor general de tarjetas */
+.dashboard-wrapper {
+  background-color: #f5f7fa !important;
+  padding: 24px 0;
+}
+
+/* Grid de tarjetas */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 16px;
 }
 
+/* Tarjetas del grid */
 .dashboard-card {
   background-color: #ffffff;
   border-radius: 8px;
@@ -21,7 +59,7 @@
   .icon {
     font-size: 32px;
     margin-bottom: 12px;
-    color: #1677ff;
+    color: #cbcccc;
   }
 
   .label {
@@ -31,12 +69,12 @@
   }
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 }
 
-
+/* Tarjetas resumen (Compromisos, Actividades, etc.) */
 .summary-cards {
   display: flex;
   flex-wrap: wrap;
@@ -47,7 +85,7 @@
     flex: 1 1 200px;
     padding: 16px;
     border-radius: 8px;
-    color: #fff;
+    color: #fff !important;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -97,28 +135,5 @@
     &.green {
       background-color: #18bba4;
     }
-  }
-}
-
-
-.dashboard-card {
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-
-  .card-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 8px;
-  }
-
-  .card-subtitle {
-    font-size: 12px;
-    color: #999;
   }
 }

@@ -1,21 +1,31 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { CommonModule }             from '@angular/common';
+import { Router, RouterModule }     from '@angular/router';
 
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzBadgeModule } from 'ng-zorro-antd/badge';
-import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { NzButtonModule } from 'ng-zorro-antd/button';
+// NG-ZORRO
+import { NzLayoutModule }   from 'ng-zorro-antd/layout';
+import { NzBadgeModule }    from 'ng-zorro-antd/badge';
+import { NzIconModule }     from 'ng-zorro-antd/icon';
+import { NzButtonModule }   from 'ng-zorro-antd/button';
+
+// Angular Material (solo para el dropdown de usuario)
+import { MatMenuModule }    from '@angular/material/menu';
+import { MatButtonModule }  from '@angular/material/button';
+import { MatIconModule }    from '@angular/material/icon';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [
     CommonModule,
-    NzIconModule,
+    RouterModule,
+    NzLayoutModule,
     NzBadgeModule,
-    NzAvatarModule,
-    NzButtonModule
+    NzIconModule,
+    NzButtonModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
@@ -24,11 +34,14 @@ export class NavbarComponent {
   @Input() isCollapsed = false;
   @Output() toggleSidebar = new EventEmitter<void>();
 
-  constructor(private router: Router) {}
+  // contadores de ejemplo
+  messageCount = 3;
+  notificationCount = 5;
 
-  logout() {
-  localStorage.clear();
-  this.router.navigate(['/auth/login']);
-}
+  constructor(public router: Router) {}
 
+  logout(): void {
+    localStorage.clear();
+    this.router.navigate(['/auth/login']);
+  }
 }
