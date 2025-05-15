@@ -17,13 +17,42 @@
     }
 
     .ant-menu-item-selected {
-      background-color: #1677ff !important;
+      background-color: #4e84ce !important;
       color: #ffffff !important;
     }
 
     .ant-menu-submenu-arrow::before,
     .ant-menu-submenu-arrow::after {
       background: #ffffff !important;
+    }
+
+    /* Submenús abiertos (como Organización, Workplace) */
+    .ant-menu-sub.ant-menu-inline {
+      background-color: #082748 !important;
+    }
+
+    /* Ítems dentro de submenús */
+    .ant-menu-sub .ant-menu-item {
+      color: #ffffff !important;
+    }
+
+    .ant-menu-sub .ant-menu-item:hover {
+      background-color: #0d3c73 !important;
+      color: #ffffff !important;
+    }
+
+    .ant-menu-sub .ant-menu-item-selected {
+      background-color: #4e84ce !important;
+      color: #ffffff !important;
+    }
+
+    /* Enlaces internos blancos */
+    .ant-menu-item a {
+      color: #ffffff !important;
+    }
+
+    .ant-menu-item a:hover {
+      color: #ffffff !important;
     }
   }
 }

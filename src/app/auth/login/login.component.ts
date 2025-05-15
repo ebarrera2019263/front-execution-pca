@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
   form: FormGroup;
+  showPassword = false;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -20,9 +21,13 @@ export class LoginComponent {
     });
   }
 
-  onLogin() {
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  onLogin(): void {
     if (this.form.valid) {
-      console.log(this.form.value);
+      console.log('Login:', this.form.value);
     }
   }
 }

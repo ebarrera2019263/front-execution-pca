@@ -12,6 +12,7 @@ import { NzButtonModule }   from 'ng-zorro-antd/button';
 import { MatMenuModule }    from '@angular/material/menu';
 import { MatButtonModule }  from '@angular/material/button';
 import { MatIconModule }    from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +26,8 @@ import { MatIconModule }    from '@angular/material/icon';
     NzButtonModule,
     MatMenuModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']

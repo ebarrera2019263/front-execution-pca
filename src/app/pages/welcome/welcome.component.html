@@ -1,14 +1,14 @@
-<nz-card class="dashboard-card" [nzHoverable]="true">
-  <nz-badge [nzCount]="183" [nzOffset]="[-5, 5]">
-    <i nz-icon nzType="calendar" nzTheme="twotone" style="font-size: 32px;"></i>
-  </nz-badge>
-  <div class="card-title">Actividades</div>
-  <div class="card-subtitle">Proyectos</div>
-</nz-card>
+
+
+
 
 
 <div class="summary-cards">
   <div class="summary-card blue">
+    <div class="background-icon">
+      <i nz-icon nzType="appstore" nzTheme="twotone"></i>
+
+    </div>
     <div class="content">
       <div class="title">Compromisos</div>
       <div class="count">{{ resumen.compromisos }}</div>
@@ -17,6 +17,11 @@
   </div>
 
   <div class="summary-card red">
+    <div class="background-icon">
+      <i nz-icon nzType="calendar" nzTheme="twotone"></i>
+
+
+    </div>
     <div class="content">
       <div class="title">Actividades</div>
       <div class="count">{{ resumen.actividades }}</div>
@@ -25,6 +30,11 @@
   </div>
 
   <div class="summary-card green">
+    <div class="background-icon">
+      <i nz-icon nzType="check-circle" nzTheme="twotone"></i>
+
+
+    </div>
     <div class="content">
       <div class="title">Oportunidades</div>
       <div class="count">{{ resumen.oportunidades }}</div>
@@ -34,7 +44,13 @@
 </div>
 
 <!-- Aquí tu grilla de módulos debajo -->
-
+<nz-card class="dashboard-card" [nzHoverable]="true">
+  <nz-badge [nzCount]="183" [nzOffset]="[-5, 5]">
+    <i nz-icon nzType="calendar" nzTheme="twotone" style="font-size: 32px;"></i>
+  </nz-badge>
+  <div class="card-title">Actividades</div>
+  <div class="card-subtitle">Proyectos</div>
+</nz-card>
 
 <div class="dashboard-wrapper">
   <div class="dashboard-grid">

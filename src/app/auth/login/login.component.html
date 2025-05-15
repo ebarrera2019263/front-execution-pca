@@ -1,44 +1,28 @@
-<div class="login-container">
-  <div class="login-content">
-    <div class="login-image"></div>
-
+<div class="login-page">
+  <div class="overlay">
     <div class="login-box">
-      <form class="form" [formGroup]="form" (ngSubmit)="onLogin()">
-        <h2>Sign in</h2>
+      <img src="assets/logo-blanco.png" class="logo" alt="Execution logo" />
+      <p class="slogan">Creando una cultura de alto desempeño</p>
 
-        <div class="flex-column">
-          <label>Email address</label>
-        </div>
-        <div class="inputForm">
-          <!-- icono de email -->
-          <input class="input" formControlName="email" placeholder="Enter your Email" />
+      <form>
+        <div class="inputs-row">
+          <input type="text" placeholder="Usuario" />
+          <input type="password" placeholder="Contraseña" />
         </div>
 
-        <div class="flex-column">
-          <label>Password</label>
-        </div>
-        <div class="inputForm">
-          <!-- icono de candado -->
-          <input type="password" class="input" formControlName="password" placeholder="Enter your Password" />
-        </div>
+        <select>
+          <option value="es">es</option>
+          <option value="en">en</option>
+        </select>
 
-        <div class="flex-row">
-          <div>
-            <input type="checkbox" formControlName="remember" />
-            <label>Remember me</label>
-          </div>
-          <span class="span">Forgot password?</span>
+        <div class="actions">
+          <button type="button">Recordar sesión</button>
+          <button type="submit">Iniciar</button>
         </div>
 
-        <button class="button-submit" [disabled]="form.invalid">Sign In</button>
+        <button class="translate" type="button">Traducir EN/ES</button>
 
-        <p class="p">Don't have an account? <span class="span">Sign Up</span></p>
-        <p class="p line">Or With</p>
-
-        <div class="flex-row">
-          <button type="button" class="btn google">Google</button>
-          <button type="button" class="btn apple">Apple</button>
-        </div>
+        <a href="#">¿Olvidó su contraseña?</a>
       </form>
     </div>
   </div>

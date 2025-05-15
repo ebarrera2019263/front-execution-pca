@@ -1,153 +1,109 @@
-.login-container {
-  min-height: 100vh;
-  padding-top: 100px; // espacio para navbar
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: #f0f2f5;
-}
-
-.login-content {
-  display: flex;
-  width: 100%;
-  max-width: 640px; // ⬅ más angosto (ajustable hasta 600px si lo quieres más)
-  height: auto;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  background-color: white;
-}
-
-
-.login-image {
-  flex: 1;
-  background-image: url('/assets/bg2.jpg');
+.login-page {
+  background: url('/assets/FONDO-03.png') no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
-}
+  width: 100vw;
+  height: 100vh;
+  position: relative;
 
-.login-box {
-  flex: 1;
-  background: white;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-family: 'Segoe UI', sans-serif;
-  max-width: 400px; // ⬅ nuevo: limita el ancho del formulario
-  width: 100%;       // ⬅ asegura que sea responsive internamente
-}
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 8vw;
+    box-sizing: border-box;
+  }
 
+  .login-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 8px;
+    color: white;
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
 
+    .logo {
+      width: 180px;
+      margin-bottom: 0.5rem;
+    }
 
-::placeholder {
-  font-family: inherit;
-}
+    .slogan {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
 
-h2 {
-  margin-bottom: 10px;
-  font-size: 26px;
-}
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+      .inputs-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
 
-.form button {
-  align-self: flex-end;
-}
+        input {
+          flex: 1;
+          min-width: 0;
+          padding: 0.6rem;
+          border: none;
+          border-radius: 5px;
+          font-size: 1rem;
+        }
+      }
 
-.flex-column > label {
-  color: #151717;
-  font-weight: 600;
-}
+      select {
+        padding: 0.6rem;
+        border-radius: 5px;
+        font-size: 1rem;
+        border: none;
+        width: 100%;
+      }
 
-.inputForm {
-  border: 1.5px solid #ecedec;
-  border-radius: 10px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-  transition: 0.2s ease-in-out;
-}
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
 
-.input {
-  margin-left: 10px;
-  border-radius: 10px;
-  border: none;
-  width: 100%;
-  height: 100%;
-}
+        button {
+          flex: 1;
+          padding: 0.6rem;
+          border-radius: 5px;
+          border: none;
+          cursor: pointer;
+          font-size: 1rem;
+          background-color: #007bff;
+          color: white;
+        }
+      }
 
-.input:focus {
-  outline: none;
-}
+      .translate {
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        width: 100%;
+      }
 
-.inputForm:focus-within {
-  border: 1.5px solid #2d79f3;
-}
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-  justify-content: space-between;
-}
-
-.flex-row > div > label {
-  font-size: 14px;
-  color: black;
-  font-weight: 400;
-}
-
-.span {
-  font-size: 14px;
-  margin-left: 5px;
-  color: #2d79f3;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.button-submit {
-  margin: 20px 0 10px 0;
-  background-color: #151717;
-  border: none;
-  color: white;
-  font-size: 15px;
-  font-weight: 500;
-  border-radius: 10px;
-  height: 50px;
-  width: 100%;
-  cursor: pointer;
-}
-
-.p {
-  text-align: center;
-  color: black;
-  font-size: 14px;
-  margin: 5px 0;
-}
-
-.btn {
-  margin-top: 10px;
-  width: 100%;
-  height: 50px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  gap: 10px;
-  border: 1px solid #ededef;
-  background-color: white;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-}
-
-.btn:hover {
-  border: 1px solid #2d79f3;
+      a {
+        font-size: 0.85rem;
+        color: #00aaff;
+        text-decoration: none;
+        text-align: right;
+        display: block;
+        margin-top: 0.5rem;
+      }
+    }
+  }
 }
