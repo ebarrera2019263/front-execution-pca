@@ -5,6 +5,7 @@
 }
 
 .navbar {
+  background-color: var(--navbar-color) !important;
   display: flex;
   align-items: center;
   padding: 0 16px;
@@ -64,7 +65,7 @@
 button[nz-button] i[nz-icon],
 .user-trigger i[nz-icon] {
   font-size: 24px;      /* o el tamaño que prefieras */
-  color: #d0c7c7;       /* color del icono */
+ color: var(--primary-color);     /* color del icono */
 }
 
 /* 2) Ajustar el badge de NG-Zorro */

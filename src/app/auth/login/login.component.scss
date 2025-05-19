@@ -4,6 +4,16 @@
   width: 100vw;
   height: 100vh;
   position: relative;
+  animation: slowZoom 20s ease-in-out infinite alternate;
+
+  @keyframes slowZoom {
+    from {
+      background-size: 100%;
+    }
+    to {
+      background-size: 105%;
+    }
+  }
 
   .overlay {
     width: 100%;
@@ -29,6 +39,19 @@
     backdrop-filter: blur(3px);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
     .logo {
       width: 180px;
@@ -57,6 +80,37 @@
           border: none;
           border-radius: 5px;
           font-size: 1rem;
+          transition: box-shadow 0.3s ease;
+
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 5px #00aaff;
+          }
+
+          &.ng-invalid.ng-touched {
+            box-shadow: 0 0 5px red;
+          }
+        }
+
+        .password-wrapper {
+          position: relative;
+          flex: 1;
+
+          input {
+            width: 100%;
+          }
+
+          .toggle-eye {
+            position: absolute;
+            right: 0.6rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+          }
         }
       }
 
@@ -66,6 +120,12 @@
         font-size: 1rem;
         border: none;
         width: 100%;
+        transition: box-shadow 0.3s ease;
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px #00aaff;
+        }
       }
 
       .actions {
@@ -82,6 +142,17 @@
           font-size: 1rem;
           background-color: #007bff;
           color: white;
+          transition: background-color 0.3s ease, transform 0.2s ease;
+
+          &:hover {
+            background-color: #0056d2;
+            transform: scale(1.02);
+          }
+
+          &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+          }
         }
       }
 
@@ -94,6 +165,11 @@
         font-size: 0.9rem;
         cursor: pointer;
         width: 100%;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
       }
 
       a {

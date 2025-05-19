@@ -1,36 +1,38 @@
-import { NavbarComponent } from './../navbar/navbar.component';
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { NzDropdownMenuComponent, NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [
+    CommonModule,
+    FormsModule,
     RouterLink,
     RouterOutlet,
     NzIconModule,
-    NzLayoutModule
-  ,
+    NzLayoutModule,
     NzBadgeModule,
-    NzIconModule,
     NzMenuModule,
-    NzBadgeModule,
     NzAvatarModule,
-    NzDropDownModule,
-
+    NzDropDownModule
   ],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.scss'
+  styleUrls: ['./layout.component.scss']
 })
-
 export class LayoutComponent {
-isCollapsed = false;
-}
+  isCollapsed = false;
 
+
+   constructor() {}
+
+
+  }
 

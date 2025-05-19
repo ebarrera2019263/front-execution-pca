@@ -1,21 +1,36 @@
 import { Component } from '@angular/core';
-import {  RouterOutlet } from '@angular/router';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './layout/navbar/navbar.component';
+
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,
-            NzIconModule,
-      NzLayoutModule,
-       NzMenuModule,
-        NavbarComponent],
-
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    NavbarComponent,
+    NzDropDownModule,
+    NzMenuModule,
+    NzButtonModule,
+    NzIconModule
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isCollapsed = false;
+  get themeConfig() {
+    const styles = getComputedStyle(document.documentElement);
+    return {
+      token: {
+        colorPrimary: styles.getPropertyValue('--ant-primary-color') || '#1677ff',
+        borderRadius: parseInt(styles.getPropertyValue('--ant-border-radius')) || 4,
+        colorBgContainer: styles.getPropertyValue('--ant-color-bg-container') || '#ffffff',
+        colorText: styles.getPropertyValue('--ant-color-text') || '#000000'
+      }
+    };
+  }
 }

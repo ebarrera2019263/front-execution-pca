@@ -1,6 +1,6 @@
 /* SOLO cambia el sidebar */
 .menu-sidebar {
-  background-color: #082748 !important;
+   background-color: var(--sidebar-color) !important;
   color: #ffffff;
   margin-top: 64px;
 
@@ -17,7 +17,7 @@
     }
 
     .ant-menu-item-selected {
-      background-color: #4e84ce !important;
+      background-color: var(--primary-color) !important;
       color: #ffffff !important;
     }
 

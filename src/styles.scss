@@ -1,4 +1,11 @@
-html, body {
-  background-color: white !important;
-  color: black !important;
+html, body, nz-layout {
+  height: 100%;
+  margin: 0;
+}
+
+
+:root {
+  --sidebar-color: #082748;
+  --navbar-color: #082748;
+  --primary-color: #1677ff;
 }

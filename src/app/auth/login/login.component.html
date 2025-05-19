@@ -2,12 +2,15 @@
   <div class="overlay">
     <div class="login-box">
       <img src="assets/logo-blanco.png" class="logo" alt="Execution logo" />
-      <p class="slogan">Creando una cultura de alto desempeño</p>
+      <p class="slogan">{{ t.slogan }}</p>
 
-      <form>
+      <form [formGroup]="form" (ngSubmit)="onLogin()">
         <div class="inputs-row">
-          <input type="text" placeholder="Usuario" />
-          <input type="password" placeholder="Contraseña" />
+          <input [placeholder]="t.email" formControlName="email" />
+          <div class="password-wrapper">
+            <input [type]="showPassword ? 'text' : 'password'" [placeholder]="t.password" formControlName="password" />
+            <button type="button" class="toggle-eye" (click)="togglePassword()">👁️</button>
+          </div>
         </div>
 
         <select>
@@ -16,13 +19,17 @@
         </select>
 
         <div class="actions">
-          <button type="button">Recordar sesión</button>
-          <button type="submit">Iniciar</button>
+          <button type="button">{{ t.remember }}</button>
+          <button type="submit" [disabled]="isLoading">
+            {{ isLoading ? 'Cargando...' : t.login }}
+          </button>
         </div>
 
-        <button class="translate" type="button">Traducir EN/ES</button>
+        <button class="translate" type="button" (click)="toggleLanguage()">
+          {{ t.toggleLang }}
+        </button>
 
-        <a href="#">¿Olvidó su contraseña?</a>
+        <a href="#">{{ t.forgot }}</a>
       </form>
     </div>
   </div>

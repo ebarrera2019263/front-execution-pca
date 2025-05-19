@@ -7,31 +7,18 @@
     [nzTrigger]="null"
   >
     <div class="sidebar-logo">
-      <img src="assets/logo-big.png" alt="Execution Logo" />
+      <img src="assets/logo-blanco.png" alt="Execution Logo" />
     </div>
 
     <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-
-      <!-- 📂 CONFIGURACIÓN -->
       <li nz-submenu nzOpen nzTitle="Configuración" nzIcon="setting">
         <ul>
-
-          <!-- 📡 MONITOR -->
           <li nz-submenu nzTitle="Organizacion" nzIcon="radar-chart">
             <ul>
-              <li nz-menu-item nzMatchRouter>
-  <a routerLink="/organizacion/puestos">Puestos</a>
-</li>
-<li nz-menu-item nzMatchRouter>
-  <a routerLink="/organizacion/empleados">Empleados</a>
-</li>
-<li nz-menu-item nzMatchRouter>
-  <a routerLink="/organizacion/departamentos">Departamentos</a>
-</li>
-<li nz-menu-item nzMatchRouter>
-  <a routerLink="/organizacion/zonas">Zonas</a>
-</li>
-
+              <li nz-menu-item nzMatchRouter><a routerLink="/organizacion/puestos">Puestos</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/organizacion/empleados">Empleados</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/organizacion/departamentos">Departamentos</a></li>
+              <li nz-menu-item nzMatchRouter><a routerLink="/organizacion/zonas">Zonas</a></li>
               <li nz-menu-item nzMatchRouter><a routerLink="/monitor/estado">Reporte personal</a></li>
               <li nz-menu-item nzMatchRouter><a routerLink="/monitor/sesiones">Sesiones</a></li>
               <li nz-menu-item nzMatchRouter><a routerLink="/monitor/errores">Errores</a></li>
@@ -40,8 +27,6 @@
               <li nz-menu-item nzMatchRouter><a routerLink="/monitor/auditoría">Auditoría</a></li>
             </ul>
           </li>
-
-          <!-- 🧑 WORKPLACE -->
           <li nz-submenu nzTitle="Workplace" nzIcon="user">
             <ul>
               <li nz-menu-item nzMatchRouter><a routerLink="/workplace/usuarios">Usuarios</a></li>
@@ -50,19 +35,18 @@
               <li nz-menu-item nzMatchRouter><a routerLink="/workplace/perfiles">Perfiles</a></li>
             </ul>
           </li>
-
         </ul>
       </li>
 
-      <!-- 📋 FORMULARIOS -->
       <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
         <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
-          </li>
+          <li nz-menu-item nzMatchRouter><a>Basic Form</a></li>
         </ul>
       </li>
 
+      <li nz-menu-item nzMatchRouter>
+        <a routerLink="/personalizar-tema">Personalizar Tema</a>
+      </li>
     </ul>
   </nz-sider>
 
