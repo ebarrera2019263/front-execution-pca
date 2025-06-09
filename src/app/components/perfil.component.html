@@ -1,0 +1,35 @@
+<div class="perfil-container">
+  <h2>Mi Perfil</h2>
+
+  <!-- Botón para iniciar activación -->
+  <div *ngIf="!qrCodeUri">
+    <button (click)="activar2FA()" [disabled]="isLoading">
+      {{ isLoading ? 'Generando QR...' : 'Activar autenticación 2FA' }}
+    </button>
+  </div>
+
+  <!-- QR + Clave manual + Input de verificación -->
+  <div *ngIf="qrCodeUri" class="qr-section">
+    <p>Escanea este código con tu app autenticadora:</p>
+
+    <!-- QR dinámico generado desde angularx-qrcode -->
+    <qrcode [qrdata]="qrCodeUri" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+
+    <p><strong>Clave manual:</strong> {{ secretKey }}</p>
+
+    <form [formGroup]="verificationForm" (ngSubmit)="verificarCodigo()">
+      <input
+        type="text"
+        formControlName="code"
+        placeholder="Código de 6 dígitos"
+        maxlength="6"
+      />
+      <button type="submit" [disabled]="verificationForm.invalid || isLoading">
+        {{ isLoading ? 'Verificando...' : 'Verificar código' }}
+      </button>
+    </form>
+  </div>
+
+  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+</div>

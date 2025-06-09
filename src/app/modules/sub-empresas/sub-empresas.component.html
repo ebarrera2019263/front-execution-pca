@@ -1,0 +1,25 @@
+<div class="table-container">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+    <h2>📁 Sub-Empresas</h2>
+    <button nz-button nzType="primary" (click)="onNuevo()">Nueva</button>
+  </div>
+
+  <nz-input-group nzPrefix="Buscar:" style="margin-bottom: 12px;">
+    <input nz-input placeholder="Nombre de sub-empresa" [(ngModel)]="searchValue" />
+  </nz-input-group>
+
+  <nz-table [nzData]="filtradas" [nzPageSize]="10" [nzShowPagination]="true">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sub of filtradas">
+        <td>{{ sub.subempcod }}</td>
+        <td>{{ sub.nombre }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

@@ -1,0 +1,13 @@
+<div class="verificacion-container">
+  <h2>Verificación 2FA</h2>
+  <p>Ingresa el código de 6 dígitos generado por tu app autenticadora.</p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="code" maxlength="6" placeholder="Código 2FA" />
+    <button type="submit" [disabled]="form.invalid || isLoading">
+      {{ isLoading ? 'Verificando...' : 'Verificar' }}
+    </button>
+
+    <div *ngIf="error" class="error">{{ error }}</div>
+  </form>
+</div>

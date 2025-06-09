@@ -9,21 +9,19 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
+
 
 // NG-ZORRO modules
-import { NzLayoutModule }   from 'ng-zorro-antd/layout';
-import { NzMenuModule }     from 'ng-zorro-antd/menu';
-import { NzAvatarModule }   from 'ng-zorro-antd/avatar';
-import { NzBadgeModule }    from 'ng-zorro-antd/badge';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { NzIconModule }     from 'ng-zorro-antd/icon';
-import { NzButtonModule }   from 'ng-zorro-antd/button';
+
 
 registerLocaleData(en);
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideNzIcons(icons),
@@ -32,16 +30,10 @@ export const appConfig: ApplicationConfig = {
     // aquí importas los módulos de NG-ZORRO
     importProvidersFrom(
       FormsModule,
-      NzLayoutModule,
-      NzMenuModule,
-      NzAvatarModule,
-      NzBadgeModule,
-      NzDropDownModule,
-      NzIconModule,
-      NzButtonModule
+
     ),
 
     provideAnimationsAsync(),
-    provideHttpClient()
+    provideHttpClient(withInterceptorsFromDi())
   ]
 };

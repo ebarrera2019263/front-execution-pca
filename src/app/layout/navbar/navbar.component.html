@@ -23,10 +23,10 @@
       </nz-badge>
     </button>
 
-    <!-- Dropdown Usuario (Material) -->
+    <!-- Dropdown Usuario -->
     <button mat-button [matMenuTriggerFor]="userMenu" class="user-trigger">
       <i nz-icon nzType="user" nzTheme="outline" class="avatar-icon"></i>
-      <span>Erick</span>
+      <span>{{ username ?? 'Usuario' }}</span>
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
     <mat-menu #userMenu="matMenu">

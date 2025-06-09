@@ -1,1 +1,30 @@
-<p>zonas works!</p>
+<div class="table-container">
+  <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+    <button nz-button nzType="primary" (click)="onAgregar()">Agregar</button>
+    <input nz-input placeholder="Search..." [(ngModel)]="search" />
+  </div>
+
+  <nz-table
+    [nzData]="zonasFiltradas"
+    [nzPageSize]="15"
+    [nzShowPagination]="true"
+    [nzScroll]="{ x: '600px' }"
+  >
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let zona of zonasFiltradas">
+        <td>{{ zona.zondes }}</td>
+        <td>
+          <button nz-button nzType="text" (click)="eliminar(zona)">
+            <i nz-icon nzType="delete"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

@@ -1,0 +1,25 @@
+.verificacion-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 10px;
+  margin: 15px 0;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}

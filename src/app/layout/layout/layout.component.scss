@@ -1,11 +1,12 @@
 /* SOLO cambia el sidebar */
 .menu-sidebar {
-   background-color: var(--sidebar-color) !important;
+  background-color: var(--sidebar-color) !important;
   color: #ffffff;
   margin-top: 64px;
+  min-height: calc(100vh - 64px); // asegura altura completa del sidebar
 
   ::ng-deep .ant-menu {
-    background-color: #082748 !important;
+    background-color: var(--sidebar-color) !important;
 
     .ant-menu-submenu-title,
     .ant-menu-item {
@@ -13,12 +14,18 @@
     }
 
     .ant-menu-item:hover {
-      background-color: #0d3c73 !important;
+      background-color: rgba(255, 255, 255, 0.1) !important;
     }
 
     .ant-menu-item-selected {
       background-color: var(--primary-color) !important;
       color: #ffffff !important;
+      border-left: 4px solid var(--primary-color) !important;
+      box-shadow: none !important;
+    }
+
+    .ant-menu-item-selected::after {
+      border-bottom: none !important;
     }
 
     .ant-menu-submenu-arrow::before,
@@ -26,31 +33,24 @@
       background: #ffffff !important;
     }
 
-    /* Submenús abiertos (como Organización, Workplace) */
     .ant-menu-sub.ant-menu-inline {
-      background-color: #082748 !important;
+      background-color: var(--sidebar-color) !important;
     }
 
-    /* Ítems dentro de submenús */
     .ant-menu-sub .ant-menu-item {
       color: #ffffff !important;
     }
 
     .ant-menu-sub .ant-menu-item:hover {
-      background-color: #0d3c73 !important;
-      color: #ffffff !important;
+      background-color: rgba(255, 255, 255, 0.1) !important;
     }
 
     .ant-menu-sub .ant-menu-item-selected {
-      background-color: #4e84ce !important;
+      background-color: var(--primary-color) !important;
       color: #ffffff !important;
     }
 
-    /* Enlaces internos blancos */
-    .ant-menu-item a {
-      color: #ffffff !important;
-    }
-
+    .ant-menu-item a,
     .ant-menu-item a:hover {
       color: #ffffff !important;
     }
@@ -63,7 +63,7 @@
   justify-content: center;
   align-items: center;
   height: 90px;
-  background-color: #082748;
+  background-color: var(--sidebar-color); // ahora dinámico
 
   img {
     height: 60px;

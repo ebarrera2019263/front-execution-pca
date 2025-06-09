@@ -1,1 +1,48 @@
-<p>departamentos works!</p>
+<div style="max-width: 1100px; margin: 0 auto; padding: 24px; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h2 style="margin: 0; font-size: 20px; font-weight: 600;">📋 Catálogo de Departamentos</h2>
+    <button nz-button nzType="primary" nzShape="round" (click)="onNuevo()">
+      <i nz-icon nzType="plus" style="margin-right: 6px;"></i>Nuevo
+    </button>
+  </div>
+
+  <nz-input-group [nzPrefix]="prefixIcon" style="margin-bottom: 16px; max-width: 400px;">
+    <input nz-input placeholder="Buscar por nombre del departamento" [(ngModel)]="searchValue" (ngModelChange)="onBuscar()" />
+  </nz-input-group>
+  <ng-template #prefixIcon>
+    <i nz-icon nzType="search"></i>
+  </ng-template>
+
+  <nz-table
+    [nzData]="paginados"
+    [nzPageSize]="pageSize"
+    [nzTotal]="totalFiltrados"
+    [nzPageIndex]="paginaActual"
+    (nzPageIndexChange)="onCambioPagina($event)"
+    [nzShowPagination]="true"
+    [nzBordered]="true"
+    [nzSize]="'middle'"
+    [nzScroll]="{ x: '1000px' }"
+  >
+    <thead>
+      <tr>
+        <th style="text-align: center;">Código</th>
+        <th style="text-align: center;">Nombre</th>
+        <th style="text-align: center;">Misión</th>
+        <th style="text-align: center;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let depto of paginados">
+        <td style="text-align: center;">{{ depto.depcod }}</td>
+        <td style="text-align: center; word-break: break-word;">{{ depto.depdes }}</td>
+        <td style="text-align: center; word-break: break-word;">{{ depto.misionParticipa || '—' }}</td>
+        <td style="text-align: center;">
+          <button nz-button nzType="default" nzShape="circle" (click)="onEditar(depto)">
+            <i nz-icon nzType="edit" nzTheme="outline"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { AuthService, LoginResponse } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +17,16 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   language: 'es' | 'en' = 'es';
 
+  mostrarNuevaFranja = false;
+  puedeModificarCompromisos = false;
+  permitirGuardarComoCompromiso = false;
+  activarTemaAzulESBI = false;
+  ocultarElementosTrascendiendo = false;
+  usarLoginPortalGYT = false;
+
   translations = {
     es: {
-      email: 'Usuario',
+      username: 'Usuario',
       password: 'Contraseña',
       remember: 'Recordar sesión',
       login: 'Iniciar',
@@ -26,7 +35,7 @@ export class LoginComponent implements OnInit {
       slogan: 'Creando una cultura de alto desempeño'
     },
     en: {
-      email: 'Email',
+      username: 'Username',
       password: 'Password',
       remember: 'Remember me',
       login: 'Login',
@@ -40,20 +49,26 @@ export class LoginComponent implements OnInit {
     return this.translations[this.language];
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', Validators.required],
       password: ['', Validators.required],
       remember: [false]
     });
   }
 
   ngOnInit(): void {
-    const savedEmail = localStorage.getItem('rememberEmail');
+    const savedUsername = localStorage.getItem('rememberUsername');
     const savedLang = localStorage.getItem('language');
-    if (savedEmail) {
-      this.form.patchValue({ email: savedEmail, remember: true });
+
+    if (savedUsername) {
+      this.form.patchValue({ username: savedUsername, remember: true });
     }
+
     if (savedLang === 'en' || savedLang === 'es') {
       this.language = savedLang;
     }
@@ -72,16 +87,41 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.isLoading = true;
 
-      if (this.form.value.remember) {
-        localStorage.setItem('rememberEmail', this.form.value.email);
+      const { username, password, remember } = this.form.value;
+
+      if (remember) {
+        localStorage.setItem('rememberUsername', username);
       } else {
-        localStorage.removeItem('rememberEmail');
+        localStorage.removeItem('rememberUsername');
       }
 
-      setTimeout(() => {
-        this.isLoading = false;
-        console.log('Login:', this.form.value);
-      }, 2000);
+      this.authService.login({ username, password }).subscribe({
+        next: (response: LoginResponse) => {
+          if (response.requires2FA) {
+            this.authService.tempUsername = response.username;
+            this.authService.tempToken = response.token;
+            this.router.navigate(['/verificacion-2fa']);
+          } else {
+            this.authService.saveToken(response.token);
+            this.authService.saveUsername(response.username);
+
+            this.mostrarNuevaFranja = response.mostrarNuevaFranja;
+            this.puedeModificarCompromisos = response.puedeModificarCompromisos;
+            this.permitirGuardarComoCompromiso = response.permitirGuardarComoCompromiso;
+            this.activarTemaAzulESBI = response.activarTemaAzulESBI;
+            this.ocultarElementosTrascendiendo = response.ocultarElementosTrascendiendo;
+            this.usarLoginPortalGYT = response.usarLoginPortalGYT;
+
+            this.router.navigate(['/welcome']);
+          }
+
+          this.isLoading = false;
+        },
+        error: (err) => {
+          console.error('Login error:', err);
+          this.isLoading = false;
+        }
+      });
     }
   }
 }

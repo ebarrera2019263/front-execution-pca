@@ -1,0 +1,23 @@
+<h3>Nuevo Departamento</h3>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>Código:</label>
+  <input nz-input formControlName="depcod" [disabled]="true" />
+
+  <br /><br />
+
+  <label>Nombre del departamento:</label>
+  <input nz-input formControlName="depdes" />
+
+  <br /><br />
+
+  <label>Misión que participa:</label>
+  <textarea nz-input rows="4" formControlName="misionParticipa"></textarea>
+
+  <br /><br />
+
+  <div class="footer">
+    <button nz-button (click)="cancel()">Cancelar</button>
+    <button nz-button [nzType]="'primary'" [disabled]="form.invalid" htmlType="submit">Guardar</button>
+  </div>
+</form>

@@ -6,6 +6,8 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { ThemeService } from './services/theme.service';
+import { FooterComponent } from './layout/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +18,18 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzDropDownModule,
     NzMenuModule,
     NzButtonModule,
-    NzIconModule
+    NzIconModule,
+    FooterComponent
+
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(private themeService: ThemeService) {
+
+  }
+
   get themeConfig() {
     const styles = getComputedStyle(document.documentElement);
     return {

@@ -1,0 +1,36 @@
+.perfil-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.qr-section {
+  margin-top: 30px;
+
+  img {
+    margin: 20px 0;
+    max-width: 250px;
+  }
+
+  input {
+    font-size: 1.1rem;
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 200px;
+  }
+
+  button {
+    padding: 10px 15px;
+  }
+}
+
+.success {
+  margin-top: 20px;
+  color: green;
+}
+
+.error {
+  margin-top: 20px;
+  color: red;
+}

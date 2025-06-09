@@ -1,46 +1,90 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
+import { PuestoFormComponent } from '../../components/puesto-form.component';
+import { PuestoService } from '../../services/puestos.service';
 
 @Component({
   selector: 'app-puestos',
   standalone: true,
-  templateUrl: './puestos.component.html',
-  styleUrls: ['./puestos.component.scss'],
   imports: [
     CommonModule,
     FormsModule,
     NzButtonModule,
     NzTableModule,
     NzInputModule,
-    NzSelectModule
-  ]
+    NzSelectModule,
+    NzModalModule
+  ],
+  templateUrl: './puestos.component.html',
+  styleUrls: ['./puestos.component.scss']
 })
 export class PuestosComponent {
   cantidad: number = 15;
   searchValue: string = '';
+  puestos: any[] = [];
 
-  puestos = [
-    { codigo: '100', nombre: 'Encargado Administrativo' },
-    { codigo: '101', nombre: 'Director De Proagro' },
-    { codigo: '102', nombre: 'Técnico Agropecuario' },
-    { codigo: '103', nombre: 'Coordinador Técnico' },
-    { codigo: '104', nombre: 'JEFE DE AGENCIA/GERENTE' },
-    { codigo: '105', nombre: 'AGENTE DE VENTAS' }
-  ];
+  constructor(
+    private puestoService: PuestoService,
+    private modal: NzModalService
+  ) {
+    this.loadPuestos();
+  }
 
-  get puestosFiltrados() {
-    if (!this.searchValue.trim()) return this.puestos;
+  get puestosFiltrados(): any[] {
+    const termino = this.searchValue.trim().toLowerCase();
+    if (!termino) return this.puestos;
     return this.puestos.filter(p =>
-      p.nombre.toLowerCase().includes(this.searchValue.toLowerCase())
+      p.nombre.toLowerCase().includes(termino)
     );
   }
 
-  onNuevo() {
-    console.log('Nuevo puesto');
+  loadPuestos(): void {
+    this.puestoService.getAll().subscribe({
+      next: (data) => {
+        console.log('Puestos cargados:', data);
+        this.puestos = data;
+      },
+      error: (err) => {
+        console.error('Error al cargar puestos:', err);
+      }
+    });
   }
+
+onNuevo(): void {
+  this.puestoService.getSiguienteCodigo().subscribe({
+    next: (res) => {
+      const modalRef = this.modal.create({
+        nzTitle: 'Agregar nuevo puesto',
+        nzContent: PuestoFormComponent,
+        nzFooter: null
+      });
+
+      modalRef.afterOpen.subscribe(() => {
+        const instance = modalRef.getContentComponent();
+        if (instance) {
+          instance.codigoInicial = res.codigo;
+        }
+      });
+
+      modalRef.afterClose.subscribe((nuevoPuesto) => {
+        if (nuevoPuesto) {
+          this.puestoService.create(nuevoPuesto).subscribe({
+            next: () => this.loadPuestos(),
+            error: (err) => console.error('Error al guardar puesto:', err)
+          });
+        }
+      });
+    },
+    error: (err) => {
+      console.error('Error al obtener código:', err);
+    }
+  });
+}
+
 }

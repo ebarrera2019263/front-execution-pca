@@ -1,12 +1,14 @@
-<div class="login-page">
+<div class="login-page" [ngClass]="{ 'tema-esbi': activarTemaAzulESBI }">
   <div class="overlay">
     <div class="login-box">
       <img src="assets/logo-blanco.png" class="logo" alt="Execution logo" />
-      <p class="slogan">{{ t.slogan }}</p>
+
+      <p class="slogan" *ngIf="!ocultarElementosTrascendiendo">{{ t.slogan }}</p>
 
       <form [formGroup]="form" (ngSubmit)="onLogin()">
         <div class="inputs-row">
-          <input [placeholder]="t.email" formControlName="email" />
+          <input [placeholder]="t.username" formControlName="username" />
+
           <div class="password-wrapper">
             <input [type]="showPassword ? 'text' : 'password'" [placeholder]="t.password" formControlName="password" />
             <button type="button" class="toggle-eye" (click)="togglePassword()">👁️</button>
@@ -29,8 +31,13 @@
           {{ t.toggleLang }}
         </button>
 
-        <a href="#">{{ t.forgot }}</a>
+        <a *ngIf="!usarLoginPortalGYT" href="#">{{ t.forgot }}</a>
+        <a *ngIf="usarLoginPortalGYT" href="https://portal.gyt.com/login" target="_blank">Entrar por portal GYT</a>
       </form>
+
+      <div *ngIf="mostrarNuevaFranja" class="alert alert-warning mt-3">
+        <strong>Nota:</strong> Esta vista incluye la nueva franja aceptable.
+      </div>
     </div>
   </div>
 </div>

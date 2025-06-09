@@ -1,0 +1,26 @@
+<h3>Nuevo Puesto</h3>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>Código:</label>
+  <input nz-input formControlName="codigo" type="number" [disabled]="true" />
+
+  <label>Nombre:</label>
+  <input nz-input formControlName="nombre" type="text" />
+
+  <label>Nombre alterno:</label>
+  <input nz-input formControlName="nombreAlterno" type="text" />
+
+  <label>Descripción:</label>
+  <textarea nz-input formControlName="descripcion" rows="3"></textarea>
+
+  <label>Propósito:</label>
+  <textarea nz-input formControlName="proposito" rows="3"></textarea>
+
+  <label>Estado:</label>
+  <label nz-switch formControlName="activo"></label>
+
+  <div style="margin-top: 16px; text-align: right;">
+    <button nz-button nzType="default" (click)="cancel()" style="margin-right: 8px;">Cancelar</button>
+    <button nz-button nzType="primary" [disabled]="form.invalid" htmlType="submit">Guardar</button>
+  </div>
+</form>

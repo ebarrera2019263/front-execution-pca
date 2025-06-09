@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>Código:</label>
+  <input nz-input type="number" formControlName="zoncod" required /><br /><br />
+
+  <label>Nombre:</label>
+  <input nz-input formControlName="zondes" required /><br /><br />
+
+  <label>Bitácora:</label>
+  <textarea nz-input formControlName="bitacora" rows="2"></textarea><br /><br />
+
+  <div style="text-align: right;">
+    <button nz-button (click)="cancel()" type="button">Cancelar</button>
+    <button nz-button nzType="primary" [disabled]="form.invalid">Guardar</button>
+  </div>
+</form>
