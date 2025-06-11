@@ -23,7 +23,7 @@ import { DepartamentoService, DepartamentoDto } from '../../services/departament
     NzModalModule,
     NzIconModule,
     NzPaginationModule,
-    MatPaginator
+
   ],
   templateUrl: './departamentos.component.html',
   styleUrls: ['./departamentos.component.scss']

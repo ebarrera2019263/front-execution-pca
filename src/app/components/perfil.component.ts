@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { QRCodeModule } from 'angularx-qrcode';
-
+import { QRCodeComponent } from 'angularx-qrcode'; // <-- CORRECTO ahora
 
 @Component({
   selector: 'app-perfil',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, QRCodeModule],
+  imports: [CommonModule, ReactiveFormsModule, QRCodeComponent], // <-- usamos el componente
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.scss']
 })
@@ -40,6 +39,7 @@ export class PerfilComponent {
     const username = this.authService.getUsername();
     if (!username) {
       this.errorMessage = 'Usuario no autenticado.';
+      this.isLoading = false;
       return;
     }
 

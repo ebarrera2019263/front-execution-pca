@@ -1,0 +1,12 @@
+<div class="twofa-container">
+  <h2>Verificación de dos factores</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="code">Ingrese su código OTP:</label>
+    <input id="code" formControlName="code" type="text" placeholder="Código" />
+
+    <button type="submit" [disabled]="isLoading || form.invalid">
+      {{ isLoading ? 'Verificando...' : 'Verificar' }}
+    </button>
+  </form>
+</div>
